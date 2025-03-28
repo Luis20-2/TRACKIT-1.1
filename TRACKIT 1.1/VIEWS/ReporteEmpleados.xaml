@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="TRACKIT_1._1.VIEWS.ReporteEmpleados"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TRACKIT_1._1.VIEWS"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid Margin="10,10,10,10">
+        <TextBlock HorizontalAlignment="Left" Margin="15,15,0,0" Text="Reporte de empleados" VerticalAlignment="Top" Background="White"
+         FontSize="13" FontWeight="DemiBold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="374,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Fecha "/><Run Text="de"/><Run Language="es-mx" Text=" "/><Run Text="i"/><Run Text="n"/><Run Text="greso:"/></TextBlock>
+        <DatePicker Name="dpFecha" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="472,87,0,0" Height="23" />
+        <TextBlock HorizontalAlignment="Left" Margin="61,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run FontSize="13" Language="es-mx" Text="Status del empleado"/><Run FontSize="13" Text=":"/></TextBlock>
+        <ComboBox HorizontalAlignment="Left" Margin="196,89,0,0" VerticalAlignment="Top" Width="140" Height="21" />
+        <TextBlock HorizontalAlignment="Left" Margin="61,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"><Run Language="es-mx" Text="Departamento o area"/><Run Text=":"/></TextBlock>
+        <ComboBox HorizontalAlignment="Left" Margin="196,46,0,0" VerticalAlignment="Top" Width="140" Height="21"/>
+        <Button Content="Mostrar resultados" Foreground="White" HorizontalAlignment="Left" Margin="311,135,0,0" VerticalAlignment="Top" Background="#00379D"/>
+        <!--#region Tabla-->
+        <DataGrid x:Name="dataGridasistencia" AutoGenerateColumns="True" BorderThickness="1" BorderBrush="#C1C1C1" AlternatingRowBackground="#F9F9F9"
+    RowBackground="#FFFFFF" GridLinesVisibility="None" HeadersVisibility="Column" CanUserAddRows="False" Margin="20,178,20,68" FontFamily="Segoe UI" FontSize="14" 
+    Foreground="#333333" SelectionUnit="FullRow" Background="#FFFFFF" RowHeight="40" >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#00379D"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="10"/>
+                </Style>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="45"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="#333333"/>
+                </Style>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Padding" Value="15,5"/>
+                    <Setter Property="Margin" Value="0,2"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Button Content="Exportar Reporte " HorizontalAlignment="Left"  Background="#00379D"  Foreground="White" VerticalAlignment="Bottom" Height="26" Width="104" Margin="150,0,0,27" />
+
+        <TextBlock HorizontalAlignment="Left" Margin="24,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Contenido"/><Run Language="es-mx" Text=":"/></TextBlock>
+        <Button Content="Grafica por departamento" HorizontalAlignment="Left" Margin="350,377,0,0" VerticalAlignment="Top" Background="#00379D" Height="26" Width="146" Foreground="White" />
+        <!--#endregion Tabla-->
+
+
+    </Grid>
+</UserControl>

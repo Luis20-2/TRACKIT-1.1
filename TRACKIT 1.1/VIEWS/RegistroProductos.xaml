@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="TRACKIT_1._1.VIEWS.RegistroProductos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TRACKIT_1._1.VIEWS"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid Margin="10">
+        <Label Content="Producto:" HorizontalAlignment="Left" Margin="33,77,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cantidad:" HorizontalAlignment="Left" Margin="37,108,0,0" VerticalAlignment="Top"/>
+        <Label Content="Catalogo:" HorizontalAlignment="Left" Margin="36,139,0,0" VerticalAlignment="Top"/>
+        <Label Content="Caducidad:" HorizontalAlignment="Left" Margin="28,170,0,0" VerticalAlignment="Top"/>
+        <TextBox  x:Name="txtNombre" HorizontalAlignment="Left" Margin="126,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <TextBox  x:Name="txtCantidad" HorizontalAlignment="Left" Margin="126,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <TextBox  x:Name="txtMarca" HorizontalAlignment="Left" Margin="126,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <DatePicker Name="dpFecha" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="126,170,0,0" Height="24" />
+        <Button  x:Name="btnAgregar" Content="Agregar"  Background="#00379D " Foreground="white" HorizontalAlignment="Left" Margin="61,239,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
+        <Button   x:Name="btnEliminar" Content="Eliminar" Background="IndianRed" Foreground="white" HorizontalAlignment="Left" Margin="61,300,0,0" VerticalAlignment="Top" Height="29" Width="78"/>
+        <Button  x:Name="btnModificar" Content="Modificar" Background="#00379D" Foreground="White" HorizontalAlignment="Left" Margin="61,352,0,0" VerticalAlignment="Top" Height="29" Width="78"/>
+        <ListView x:Name="lvProductos" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="327,30,24,20">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="40"/>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="100"/>
+                    <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Cantidad}" Width="100"/>
+                    <GridViewColumn Header="Caducidad" DisplayMemberBinding="{Binding Caducidad}" Width="100"/>
+                    <GridViewColumn Header="Catalogo" DisplayMemberBinding="{Binding Catalogo}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content=" ID producto:" HorizontalAlignment="Left" Margin="33,42,0,0" VerticalAlignment="Top"/>
+        <TextBox  x:Name="txtNombre_Copiar" HorizontalAlignment="Left" Margin="126,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+
+    </Grid>
+</UserControl>

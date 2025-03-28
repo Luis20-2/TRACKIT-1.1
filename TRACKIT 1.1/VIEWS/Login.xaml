@@ -1,0 +1,152 @@
+﻿<Window x:Class="TRACKIT_1._1.VIEWS.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TRACKIT_1._1.VIEWS"
+        mc:Ignorable="d"
+        Title="Login" Height="500"
+        Width="350"
+        Background="White"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="TRACKIT" HorizontalAlignment="Left" FontSize="30" FontWeight="UltraBlack" Foreground="Black" Margin="106,12,0,13"
+                   FontFamily="Goudy Old Style" Grid.Column="0"/>
+            <Image Source="/IMG/ima/Logo.jpeg" HorizontalAlignment="Left" Margin="40,0,0,0" Width="66" />
+            <Button Content="X" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Width="30" 
+                    Height="30" 
+                    Background="Transparent" 
+                    BorderThickness="0" 
+                    Margin="0,10,10,0"
+                    Click="Cancelar_Click"/>
+            <TextBlock Text="El mejor programa para control y seguimiento acompañanos a este nuevo comiezo" 
+                    HorizontalAlignment="Center" 
+                    FontSize="8" 
+                    FontWeight="DemiBold" 
+                    Foreground="Black" 
+                    Margin="0,5,0,40"
+                    Grid.Row="1"
+                    Width="298"/>
+
+            <TextBlock Text="Iniciar sesión con correo"
+                    Background="Transparent" 
+                    HorizontalAlignment="Center" 
+                    FontSize="10"
+                    FontWeight="Medium"
+                    Foreground="Black" 
+                    Margin="10,25,0,10"
+                    Grid.Row="1"
+                    Width="120"/>
+
+           
+            <!-- Este es el cuandro de texto el cual se usara para poner el correo electronico-->
+            <TextBox x:Name="txtEmail" 
+                     Grid.Row="2" 
+                     FontFamily="Monserrat"
+                     Tag="Correo electronico"
+                     BorderBrush="DarkGray"
+                     Margin="50,12,70,10" 
+                     GotFocus="TextBox_GotFocus"
+                     LostFocus="TextBox_LostFocus"
+                     Loaded="TextBox_Loaded"
+                     />
+           
+            <!--Aqui sera el aparatado para la contraseña, se usa el PasswordBox para que se ocultara la contraseña-->
+            <!-- PasswordBox real (oculto inicialmente) -->
+            <PasswordBox x:Name="pbRealPassword"
+                 Grid.Row="3"
+                 FontFamily="Montserrat"
+                 BorderBrush="DarkGray"
+                 PasswordChar="•"
+                 GotFocus="PbRealPassword_GotFocus"
+                 LostFocus="PbRealPassword_LostFocus"
+                 Visibility="Collapsed"
+                         Margin="50,12,70,10"/>
+            <!-- Inicialmente oculto -->
+
+            <!-- TextBox de placeholder (visible inicialmente) -->
+            <TextBox x:Name="txtPasswordPlaceholder" 
+             Text="Contraseña" 
+                     Grid.Row="3"
+                     FontFamily="Montserrat"
+                     Foreground="LightGray"
+                     BorderBrush="DarkGray"
+                    GotFocus="TxtPasswordPlaceholder_GotFocus"
+                     Margin="50,12,70,10"/>
+            
+                         
+                    
+
+            <!--Esto es un check que tendra como funcion, si se guarda la contraseña o no-->
+            <CheckBox Content="Recordar contraseña"
+                      Grid.Row="4"
+                      HorizontalAlignment="Left"
+                      FontSize="10"
+                      FontWeight="Medium"
+                      Foreground="Black"
+                      Margin="50,0,0,40"
+                      />
+            <!--Este boton sera para recuperar la contraseña-->
+            <Button Content="¿Olvidaste tu contraseña?"
+                       Grid.Row="3"
+                       HorizontalAlignment="Right"
+                       FontSize="10"
+                       FontWeight="DemiBold"
+                       Background="Transparent"
+                       BorderThickness="0"
+                       Foreground="DodgerBlue"
+                       Margin="0,56,0,44" Grid.RowSpan="2" Click="Button_recuperarPassword"
+                       />
+
+            <!--Este boton sera para iniciar sesion-->
+            <Button Grid.Row="5"
+                     Content="Iniciar sesion"
+                     FontSize="15"
+                     Margin="50,0,70,30"
+                     Background="DodgerBlue"
+                     Foreground="White" 
+                    Click="Button_Inicio"/>
+            
+            <!--Este boton es para registarse si es usuario nuevo--> 
+            <Button x:Name="txtRegistro" Grid.Row="5"
+                     Content="Registro"
+                     FontSize="10"
+                     Margin="280,39,25,0"
+                     Background="Transparent"
+                     Foreground="DodgerBlue" 
+                     Click="Button_Registro"
+                     FontWeight="Black"
+                     BorderThickness="0" Height="21" VerticalAlignment="Top"/>
+
+            <TextBlock Text="Ayuda" Grid.Row="6" HorizontalAlignment="Left" Margin="10,50,0,10" FontSize="10"/>
+            <TextBlock Text="Privacidad" Grid.Row="6" HorizontalAlignment="Left" Margin="126,50,0,10" FontSize="10"/>
+            <TextBlock Text="Terminos y Condiciones" Grid.Row="6" HorizontalAlignment="Left" Margin="220,50,0,10" FontSize="10"/>
+            <TextBlock Text="  2025 Desarrollo de Software" Grid.Row="7" HorizontalAlignment="Center" Margin="0,30,0,10" FontSize="8"/>
+            <TextBlock Text="©" Grid.Row="7" HorizontalAlignment="Left" Margin="106,27,0,5" FontSize="12"/>
+
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>

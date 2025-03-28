@@ -1,0 +1,32 @@
+﻿<Window x:Class="TRACKIT_1._1.MODALS.EditarEmpleado"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TRACKIT_1._1.MODALS"
+        mc:Ignorable="d"
+        Title="EditarEmpleado"    Height="350" Width="300" WindowStyle="None" WindowStartupLocation="CenterOwner">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="10,10,10,20">
+            <Label Content="Nombre Completo"/>
+            <TextBox x:Name="txtNombre" Width="200"/>
+
+            <Label Content="Telefono"/>
+            <TextBox x:Name="txtTelefono" Width="200"/>
+
+            <Label Content="Puesto de Trabajo"/>
+            <ComboBox x:Name="cmbPuesto" Width="200" ItemsSource="{Binding Puestos }"  DisplayMemberPath="puestos"/>
+
+            <Label Content="Salario"/>
+            <TextBox x:Name="txtSalario" Width="200"/>
+
+            <Label Content="Departamento"/>
+            <ComboBox x:Name="cmbDepartamento" Width="200" DisplayMemberPath="departamentos" ItemsSource="{Binding Departamentos }"/>
+            <Label Content="Direccion"/>
+            <TextBox x:Name="txtDireccion" Width="200"/>
+            <Separator Height="10" Background="Transparent"/>
+            <Button Content="Guardar" Background="#00379D" Foreground="White" Width="100"/>
+        </StackPanel>
+       
+    </ScrollViewer>
+</Window>
