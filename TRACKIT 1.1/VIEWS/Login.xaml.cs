@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using TRACKIT_1._1.VIEWS;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
+
 
 namespace TRACKIT_1._1.VIEWS
 {
-    /// <summary>
-    /// Lógica de interacción para Login.xaml
-    /// </summary>
-    public partial class Login : Window
+   public partial class Login : Window
     {
         public Login()
         {
@@ -27,6 +15,37 @@ namespace TRACKIT_1._1.VIEWS
 
            
         }
+
+       public bool validarUsuario(string email, string password)
+        {
+            // Query para buscar el usuario
+            string query = "SELECT * FROM USUARIOS WHERE Correo = @email AND Contraseña = @password"; // Query para buscar el usuario
+            using (SqlConnection conexion = new SqlConnection(DB.Conexion)) // Conexión a la base de datos
+            {
+                SqlCommand comando = new SqlCommand(query, conexion);  // Comando para ejecutar la query
+                comando.Parameters.AddWithValue("@email", email);   // Parámetro para el email
+                comando.Parameters.AddWithValue("@password", password);  // Parámetro para la contraseña
+                try  // Intenta ejecutar la query
+                {
+                    conexion.Open();
+                     object resultado = comando.ExecuteScalar();  // Ejecuta la query y guarda el resultado
+                    if (resultado != null)  // Si el resultado no es nulo, el usuario existe
+                    {
+                        return true;
+                    }
+                    else  // Si el resultado es nulo, el usuario no existe
+                    {
+                        return false;
+                    }
+                }
+                catch (SqlException ex)  // Si hay un error en la conexión, muestra un mensaje
+                {
+                    MessageBox.Show($"Error en la conexion en la base de datos: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -99,26 +118,20 @@ namespace TRACKIT_1._1.VIEWS
            
         }
 
-        private void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+      
 
         private void Button_Inicio(object sender, RoutedEventArgs e)
-        {   
-            
-            var email = txtEmail.Text;
-            var password = pbRealPassword.Password;
-            if (email == "admin" && password == "admin")
+        {
+
+            string email = txtEmail.Text;
+            string password = pbRealPassword.Password;
+            Login login = new Login();
+            if (login.validarUsuario(email, password))
             {
                 MainWindow mainWindow = new MainWindow();
-                this.Close();
                 mainWindow.Show();
+                this.Close();
+                
             }
             else
             {
