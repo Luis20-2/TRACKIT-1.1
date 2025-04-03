@@ -223,7 +223,7 @@ namespace TRACKIT_1._1.VIEWS
             {
                 SqlCommand comando = new SqlCommand(query, conexion);
                 comando.Parameters.AddWithValue("@correo", correo);
-                comando.Parameters.AddWithValue("@password", password); // Deberías hashear esto
+                comando.Parameters.AddWithValue("@password", password);
 
                 conexion.Open();
                 comando.ExecuteNonQuery();
