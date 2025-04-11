@@ -1,8 +1,11 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Primitives;
+
+
 
 
 namespace TRACKIT_1._1.VIEWS
@@ -12,6 +15,7 @@ namespace TRACKIT_1._1.VIEWS
         public Login()
         {
             InitializeComponent();
+            CargarContraseña();
 
            
         }
@@ -83,7 +87,7 @@ namespace TRACKIT_1._1.VIEWS
         }
 
         private void PbRealPassword_LostFocus(object sender, RoutedEventArgs e)
-        {
+        {   
             // Si no hay contraseña, vuelve a mostrar el placeholder
             if (string.IsNullOrEmpty(pbRealPassword.Password))
             {
@@ -125,9 +129,11 @@ namespace TRACKIT_1._1.VIEWS
 
             string email = txtEmail.Text;
             string password = pbRealPassword.Password;
+            bool recordar = RecordarC.IsChecked == true;
             Login login = new Login();
             if (login.validarUsuario(email, password))
             {
+                GuardarContraseña(password, recordar);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
@@ -157,6 +163,31 @@ namespace TRACKIT_1._1.VIEWS
             Recuperar.ShowDialog();
             
         }
+
+        
+        private void GuardarContraseña( String contraseña, bool recordar)
+        {
+            // Guardar la contraseña en el archivo de configuración
+            Properties.Settings.Default.ContraseñaRecordada = recordar ? contraseña:"";
+            Properties.Settings.Default.RecordarContraseña = recordar ;
+            Properties.Settings.Default.Save();
+        }
+
+        private void CargarContraseña()
+        {
+            if (Properties.Settings.Default.RecordarContraseña)
+            {        
+                pbRealPassword.Password = Properties.Settings.Default.ContraseñaRecordada;
+                RecordarC.IsChecked = true;
+            }
+           
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
+
