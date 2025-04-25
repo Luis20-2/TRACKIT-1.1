@@ -69,7 +69,7 @@ namespace TRACKIT_1._1.VIEWS
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587, // Puerto SMTP de Gmail
-                Credentials = new NetworkCredential("trackitverificacion.1@gmail.com", "smls kqvp klnu yfjb"),
+                Credentials = new NetworkCredential("trackitverificacion.1@gmail.com", "*** **** **** ****"),
                 EnableSsl = true,
             };
             // Crear el mensaje de correo
